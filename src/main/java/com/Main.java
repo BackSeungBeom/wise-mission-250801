@@ -11,8 +11,6 @@ public class Main {
     /**
      * 프로그램 실행의 시작 지점입니다.
      * 사용자 입력을 받아 각 기능을 수행합니다.
-     *
-     * @param arg 명령줄 인자 (사용되지 않음)
      */
     public static void main(String[] arg) {
         Scanner sc = new Scanner(System.in); // 사용자 입력 스캐너
