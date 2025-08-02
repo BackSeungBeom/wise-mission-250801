@@ -53,7 +53,7 @@ public class QuoteController {
      * 특정 ID의 명언을 삭제합니다.
      * 명령 문자열에서 ID를 파싱하고, 해당하는 명언을 리스트에서 찾아서 제거합니다.
      *
-     * @param command 사용자 입력 명령 문자열 (예: "삭제?id=1")
+     * @param command 사용자 입력 명령 문자열 (예: "삭제?id=1" )
      */
     public static void deleteQuote(String command) {
         // 명령 문자열에서 ID를 추출합니다.
