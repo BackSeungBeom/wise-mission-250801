@@ -16,7 +16,7 @@ class Quote {
      * @param saying 명언의 내용
      * @param author 명언의 저자
      */
-    public Quote(int id, String saying, String author){
+    public Quote(int id, String saying, String author) {
         this.id = id;
         this.saying = saying;
         this.author = author;
@@ -24,37 +24,55 @@ class Quote {
 
     /**
      * 명언의 ID를 반환합니다.
+     *
      * @return 현재 명언의 ID
      */
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
     /**
      * 명언의 ID를 설정합니다.
+     *
      * @param id 새로 설정할 ID
      */
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * 명언의 내용을 반환합니다.
+     *
      * @return 현재 명언의 내용
      */
-    public String getSaying() { return saying; }
+    public String getSaying() {
+        return saying;
+    }
 
     /**
      * 명언의 내용을 설정합니다.
+     *
      * @param saying 새로 설정할 내용
      */
-    public void setSaying(String saying) { this.saying = saying; }
+    public void setSaying(String saying) {
+        this.saying = saying;
+    }
 
     /**
      * 명언의 저자를 반환합니다.
+     *
      * @return 현재 명언의 저자
      */
-    public String getAuthor() { return author; }
+    public String getAuthor() {
+        return author;
+    }
 
     /**
      * 명언의 저자를 설정합니다.
+     *
      * @param author 새로 설정할 저자
      */
-    public void setAuthor(String author) { this.author = author; }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }
