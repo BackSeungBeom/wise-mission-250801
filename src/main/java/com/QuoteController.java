@@ -14,13 +14,13 @@ public class QuoteController {
     // 다음에 부여될 명언 ID (애플리케이션 전역에서 공유되는 정적 필드)
     private static int nextQuoteId = 1;
     // 사용자 입력을 받는 스캐너 객체 (애플리케이션 전역에서 공유되는 정적 필드)
-    private static final Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
     /**
      * 새로운 명언을 등록하는 기능을 수행합니다.
      * 사용자로부터 명언 내용과 작가 이름을 입력받아 리스트에 추가합니다.
      */
-    public static void addQuote() {
+    public void addQuote() {
         System.out.print("명언 : ");
         String saying = sc.nextLine();
         System.out.print("작가 : ");
@@ -29,7 +29,7 @@ public class QuoteController {
         Quote newQuote = new Quote(nextQuoteId, saying, author);
         quoteList.add(newQuote);
 
-        System.out.println(nextQuoteId + "번 명언이 등록되었습니다.");
+        System.out.printf("%d번 명언이 등록되었습니다.%n", nextQuoteId);
         nextQuoteId++;
     }
 
@@ -37,7 +37,7 @@ public class QuoteController {
      * 현재까지 등록된 모든 명언 목록을 출력합니다.
      * 명언이 없을 경우 메시지를 표시합니다.
      */
-    public static void listQuotes() {
+    public void listQuotes() {
         if (quoteList.isEmpty()) {
             System.out.println("등록된 명언이 없습니다.");
         } else {
@@ -55,7 +55,7 @@ public class QuoteController {
      *
      * @param command 사용자 입력 명령 문자열 (예: "삭제?id=1" )
      */
-    public static void deleteQuote(String command) {
+    public void deleteQuote(String command) {
         // 명령 문자열에서 ID를 추출합니다.
         int deleteId = parseIdFromCommand(command);
 
@@ -72,14 +72,14 @@ public class QuoteController {
             if (quoteList.get(i).getId() == deleteId) {
                 quoteList.remove(i); // 해당 명언 제거
                 found = true;
-                System.out.println(deleteId + "번 명언이 삭제되었습니다.");
+                System.out.printf("%d번 명언이 삭제되었습니다.%n", deleteId);
                 break; // 삭제 후 반복 중단
             }
         }
 
         // 해당 ID의 명언을 찾지 못한 경우 메시지 출력
         if (!found) {
-            System.out.println(deleteId + "번 명언은 존재하지 않습니다.");
+            System.out.printf("%d번 명언은 존재하지 않습니다.%n", deleteId);
         }
     }
 
@@ -89,7 +89,7 @@ public class QuoteController {
      *
      * @param command 사용자 입력 명령 문자열 (예: "수정?id=1")
      */
-    public static void modifyQuote(String command) {
+    public void modifyQuote(String command) {
         // 명령 문자열에서 ID를 추출합니다.
         int modifyId = parseIdFromCommand(command);
 
@@ -104,24 +104,24 @@ public class QuoteController {
         for (Quote quote : quoteList) {
             if (quote.getId() == modifyId) {
                 found = true;
-                System.out.println("명언(기존) : " + quote.getSaying());
+                System.out.printf("명언(기존) : %s%n", quote.getSaying());
                 System.out.print("명언 : ");
                 String newSaying = sc.nextLine();
                 quote.setSaying(newSaying); // 명언 내용 업데이트
 
-                System.out.println("작가(기존) : " + quote.getAuthor());
+                System.out.printf("작가(기존) : %s%n", quote.getAuthor());
                 System.out.print("작가 : ");
                 String newAuthor = sc.nextLine();
                 quote.setAuthor(newAuthor); // 작가 이름 업데이트
 
-                System.out.println(modifyId + "번 명언이 수정되었습니다.");
+                System.out.printf("%d번 명언이 수정되었습니다.%n", modifyId);
                 break; // 수정 후 반복 중단
             }
         }
 
         // 해당 ID의 명언을 찾지 못한 경우 메시지 출력
         if (!found) {
-            System.out.println(modifyId + "번 명언은 존재하지 않습니다.");
+            System.out.printf("%d번 명언은 존재하지 않습니다.%n", modifyId);
         }
     }
 
@@ -132,7 +132,7 @@ public class QuoteController {
      * @param command ID가 포함된 명령 문자열
      * @return 추출된 정수 ID, 또는 오류 시 -1
      */
-    private static int parseIdFromCommand(String command) {
+    private int parseIdFromCommand(String command) {
         try {
             String[] parts = command.split("=");
             // 명령어가 "삭제?id="까지만 있고 실제 ID 부분이 없는 경우 처리
