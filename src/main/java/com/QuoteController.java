@@ -1,7 +1,8 @@
 package com;
 
-import java.util.ArrayList; // 동적 배열 리스트 사용
-import java.util.Scanner;   // 사용자 입력을 위한 스캐너 사용
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * 명언 앱의 컨트롤러 역할을 하는 클래스입니다.
@@ -10,11 +11,11 @@ import java.util.Scanner;   // 사용자 입력을 위한 스캐너 사용
  */
 public class QuoteController {
     // 모든 명언 객체를 저장하는 리스트 (애플리케이션 전역에서 공유되는 정적 필드)
-    private static final ArrayList<Quote> quoteList = new ArrayList<>();
+    private static List<Quote> quoteList = new ArrayList<>();
     // 다음에 부여될 명언 ID (애플리케이션 전역에서 공유되는 정적 필드)
     private static int nextQuoteId = 1;
     // 사용자 입력을 받는 스캐너 객체 (애플리케이션 전역에서 공유되는 정적 필드)
-    Scanner sc = new Scanner(System.in);
+    private final Scanner sc = new Scanner(System.in);
 
     /**
      * 새로운 명언을 등록하는 기능을 수행합니다.
@@ -43,6 +44,7 @@ public class QuoteController {
         } else {
             System.out.println("번호 / 작가 / 명언");
             System.out.println("----------------------");
+            quoteList = quoteList.reversed();
             for (Quote quote : quoteList) {
                 System.out.printf("%d / %s / %s%n", quote.getId(), quote.getAuthor(), quote.getSaying());
             }
